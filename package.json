@@ -1,0 +1,12 @@
+{
+  "name": "file-watchman",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "0xflotus",
+  "license": "MIT",
+  "dependencies": {
+    "filewatcher": "^3.0.1",
+    "shellsync": "^0.2.1",
+    "yargs": "^13.2.2"
+  }
+}
