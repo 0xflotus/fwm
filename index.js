@@ -1,6 +1,3 @@
-const filewatcher = require("filewatcher");
-const sh = require("shellsync");
-
 const { cmd, file } = require("yargs").argv;
 
 if (!cmd || !file) {
@@ -8,9 +5,9 @@ if (!cmd || !file) {
   process.exit(-1);
 }
 
-const watcher = filewatcher();
+const watcher = require("filewatcher")();
 watcher.add(file);
 watcher.on("change", async function(dat, _) {
   console.log("File modified: %s", dat);
-  await sh.out(cmd);
+  await require("shellsync").out(cmd);
 });
