@@ -10,7 +10,7 @@ if (!cmd || !file) {
 
 const watcher = filewatcher();
 watcher.add(file);
-watcher.on("change", function(dat, _) {
+watcher.on("change", async function(dat, _) {
   console.log("File modified: %s", dat);
-  sh.out(cmd);
+  await sh.out(cmd);
 });
