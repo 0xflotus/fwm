@@ -1,13 +1,16 @@
 const filewatcher = require("filewatcher");
 const sh = require("shellsync");
 
+const { cmd, file } = require("yargs").argv;
+
+if (!cmd || !file) {
+  console.log("Please specify <file> and <cmd>");
+  process.exit(-1);
+}
+
 const watcher = filewatcher();
-
-watcher.add("./test.txt");
-
-watcher.list();
-
-watcher.on("change", function(file, stat) {
-  console.log("File modified: %s", file);
-  console.log(sh`cat ./test.txt`);
+watcher.add(file);
+watcher.on("change", function(dat, _) {
+  console.log("File modified: %s", dat);
+  sh.out`${cmd}`;
 });
