@@ -1,6 +1,6 @@
 const { cmd, file } = require("yargs").argv;
 
-if (!cmd || !file) {
+if (!(cmd && file)) {
   console.log("Please specify <file> and <cmd>");
   process.exit(-1);
 }
