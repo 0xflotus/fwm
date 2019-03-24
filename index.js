@@ -7,7 +7,7 @@ if (!(cmd && file)) {
 
 const watcher = require("filewatcher")();
 watcher.add(file);
-watcher.on("change", async function(dat, _) {
+watcher.on("change", async function(dat, _notUsed) {
   console.log("File modified: %s", dat);
   await require("shellsync").out(cmd);
 });
